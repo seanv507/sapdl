@@ -17,7 +17,7 @@ dfs = ( pd.read_csv('offline_challenge/xtrain_obfuscated.txt', header=None, name
         pd.read_csv('offline_challenge/ytrain.txt',header=None, names=['label']))
 df = pd.concat(dfs,axis=1)
 labels =pd.read_csv('labels.txt',header=None, names=['label','title'], sep='\t')
-df =df.merge(labels, on='label')
+df = df.merge(labels, on='label')
 df['len']=df.text.str.len()
 # df.groupby('title')['len'].hist(normed=True)
 # normed doesn't seem to work
