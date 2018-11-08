@@ -36,14 +36,16 @@ text_train, text_test, categorical_labels_train, categorical_labels_test = (
 
 n_output = len(labels)
 model = models.Sequential()
-model.add(layers.Dense(16, activation='relu', input_shape = (text.shape[1],)))
-model.add(layers.Dense(16, activation='relu'))
-model.add(layers.Dense(n_output, activation='softmax'))
+model.add(layers.Dense(100, activation='relu', input_shape = (text.shape[1],)))
+model.add(layers.Dropout(0.3))
+model.add(layers.Dense(100, activation='relu'))
+model.add(layers.Dropout(0.3))
+model.add(layers.Dense(n_output, kernel_regularizer=regularizers.l2(0.001), activation='softmax'))
 model.compile(optimizer=optimizers.RMSprop(lr=0.001),
               loss='categorical_crossentropy')
-hist = model.fit(text_train, categorical_labels_train, epochs=20,
+hist_100_dr_0p3_l1_0p001 = model.fit(text_train, categorical_labels_train, epochs=20,
                  batch_size=512, validation_data=(text_test, categorical_labels_test))
-
+#hist_100_dr 2 layers of 100, dropout of 0.2, l2=0.0001
 model_lin = models.Sequential()
 model_lin.add(layers.Dense(n_output, activation='softmax', kernel_regularizer=regularizers.l1(0.0001),
                            input_shape = (text.shape[1],)))
@@ -66,8 +68,11 @@ hist_lin = model_lin.fit(text_train, categorical_labels_train, epochs=20,
 
 # vw --passes=15 --cache --ngram=10 --skips=3 --early_terminate=15 --l1=0.0001 --loss_function=logistic --oaa 12 vw_data.txt -f vw_data.model
 tokenizer = Tokenizer(char_level=True)
-tokenizer.fit_on_texts(text)
-tokenizer.textfit_on_texts(text)
+
+tokenizer.fit_on_texts(df.text.tolist())
+sequences =  tokenizer.texts_to_sequences(df.text.tolist())
+word_index = tokenizer.word_index
+print('Found {} unique tokens.'.format(len(word_index)))
 text
 
 def plot_history(hi):
