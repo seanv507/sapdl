@@ -1,0 +1,219 @@
+n_output = len(labels)
+model = models.Sequential()
+model.add(layers.Dense(100, activation='relu', input_shape = (text.shape[1],)))
+model.add(layers.Dropout(0.3))
+model.add(layers.Dense(100, activation='relu'))
+model.add(layers.Dropout(0.3))
+model.add(layers.Dense(n_output, kernel_regularizer=regularizers.l2(0.0001), activation='softmax'))
+model.compile(optimizer=optimizers.RMSprop(lr=0.001),
+              loss='categorical_crossentropy')
+
+hist_100_dr_0p4_l2_0p0001 = model.fit(text_train, categorical_labels_train, epochs=20,
+                 batch_size=512, validation_data=(text_test, categorical_labels_test))
+Train on 24384 samples, validate on 8129 samples
+Epoch 1/20
+24384/24384 [==============================] - 50s 2ms/step - loss: 2.2963 - val_loss: 1.6960
+Epoch 2/20
+24384/24384 [==============================] - 51s 2ms/step - loss: 1.6290 - val_loss: 1.2238
+Epoch 3/20
+24384/24384 [==============================] - 48s 2ms/step - loss: 1.2783 - val_loss: 0.9708
+Epoch 4/20
+24384/24384 [==============================] - 48s 2ms/step - loss: 1.0664 - val_loss: 0.7934
+Epoch 5/20
+24384/24384 [==============================] - 69s 3ms/step - loss: 0.9099 - val_loss: 0.8513
+Epoch 6/20
+24384/24384 [==============================] - 54s 2ms/step - loss: 0.7771 - val_loss: 0.6332
+Epoch 7/20
+24384/24384 [==============================] - 51s 2ms/step - loss: 0.7091 - val_loss: 0.6182
+Epoch 8/20
+24384/24384 [==============================] - 54s 2ms/step - loss: 0.6402 - val_loss: 0.6614
+Epoch 9/20
+24384/24384 [==============================] - 50s 2ms/step - loss: 0.5681 - val_loss: 0.6194
+Epoch 10/20
+24384/24384 [==============================] - 51s 2ms/step - loss: 0.5297 - val_loss: 0.6216
+Epoch 11/20
+24384/24384 [==============================] - 54s 2ms/step - loss: 0.4790 - val_loss: 0.5256
+Epoch 12/20
+24384/24384 [==============================] - 49s 2ms/step - loss: 0.4427 - val_loss: 0.5660
+Epoch 13/20
+24384/24384 [==============================] - 55s 2ms/step - loss: 0.4126 - val_loss: 0.5071
+Epoch 14/20
+24384/24384 [==============================] - 53s 2ms/step - loss: 0.4033 - val_loss: 0.6132
+Epoch 15/20
+24384/24384 [==============================] - 49s 2ms/step - loss: 0.3626 - val_loss: 0.6869
+Epoch 16/20
+24384/24384 [==============================] - 54s 2ms/step - loss: 0.3461 - val_loss: 0.5701
+Epoch 17/20
+24384/24384 [==============================] - 50s 2ms/step - loss: 0.3212 - val_loss: 0.4887
+Epoch 18/20
+24384/24384 [==============================] - 49s 2ms/step - loss: 0.3212 - val_loss: 0.5266
+Epoch 19/20
+24384/24384 [==============================] - 55s 2ms/step - loss: 0.3007 - val_loss: 0.5386
+Epoch 20/20
+24384/24384 [==============================] - 51s 2ms/step - loss: 0.2856 - val_loss: 0.6591
+
+hist_100_dr_0p3_l2_0p0001 = hist_100_dr_0p4_l2_0p0001
+
+n_output = len(labels)
+model = models.Sequential()
+model.add(layers.Dense(100, activation='relu', input_shape = (text.shape[1],)))
+model.add(layers.Dropout(0.3))
+model.add(layers.Dense(100, activation='relu'))
+model.add(layers.Dropout(0.3))
+model.add(layers.Dense(n_output, kernel_regularizer=regularizers.l2(0.001), activation='softmax'))
+model.compile(optimizer=optimizers.RMSprop(lr=0.001),
+              loss='categorical_crossentropy')
+hist_100_dr_0p3_l2_0p001 = model.fit(text_train, categorical_labels_train, epochs=20,
+                 batch_size=512, validation_data=(text_test, categorical_labels_test))
+Train on 24384 samples, validate on 8129 samples
+Epoch 1/20
+24384/24384 [==============================] - 53s 2ms/step - loss: 2.3409 - val_loss: 1.6339
+Epoch 2/20
+24384/24384 [==============================] - 54s 2ms/step - loss: 1.6117 - val_loss: 1.1041
+Epoch 3/20
+24384/24384 [==============================] - 53s 2ms/step - loss: 1.2546 - val_loss: 0.9176
+Epoch 4/20
+24384/24384 [==============================] - 51s 2ms/step - loss: 1.0412 - val_loss: 0.7658
+Epoch 5/20
+24384/24384 [==============================] - 60s 2ms/step - loss: 0.8975 - val_loss: 0.7747
+Epoch 6/20
+24384/24384 [==============================] - 66s 3ms/step - loss: 0.7983 - val_loss: 0.6396
+Epoch 7/20
+24384/24384 [==============================] - 68s 3ms/step - loss: 0.7098 - val_loss: 0.6993
+Epoch 8/20
+24384/24384 [==============================] - 66s 3ms/step - loss: 0.6537 - val_loss: 0.5463
+Epoch 9/20
+24384/24384 [==============================] - 67s 3ms/step - loss: 0.5947 - val_loss: 0.5683
+Epoch 10/20
+24384/24384 [==============================] - 65s 3ms/step - loss: 0.5673 - val_loss: 0.6032
+Epoch 11/20
+24384/24384 [==============================] - 65s 3ms/step - loss: 0.5219 - val_loss: 0.6100
+Epoch 12/20
+24384/24384 [==============================] - 64s 3ms/step - loss: 0.4675 - val_loss: 0.6078
+Epoch 13/20
+24384/24384 [==============================] - 66s 3ms/step - loss: 0.4483 - val_loss: 0.4847
+Epoch 14/20
+24384/24384 [==============================] - 68s 3ms/step - loss: 0.4182 - val_loss: 0.5782
+Epoch 15/20
+24384/24384 [==============================] - 67s 3ms/step - loss: 0.3985 - val_loss: 0.5169
+Epoch 16/20
+24384/24384 [==============================] - 68s 3ms/step - loss: 0.3644 - val_loss: 0.5011
+Epoch 17/20
+24384/24384 [==============================] - 65s 3ms/step - loss: 0.3506 - val_loss: 0.5936
+Epoch 18/20
+24384/24384 [==============================] - 65s 3ms/step - loss: 0.3390 - val_loss: 0.5405
+Epoch 19/20
+24384/24384 [==============================] - 64s 3ms/step - loss: 0.3181 - val_loss: 0.5184
+Epoch 20/20
+24384/24384 [==============================] - 71s 3ms/step - loss: 0.3010 - val_loss: 0.5162
+
+
+model = models.Sequential()
+model.add(layers.Dense(100, activation='relu', input_shape = (text.shape[1],)))
+model.add(layers.Dropout(0.3))
+model.add(layers.Dense(100, activation='relu'))
+model.add(layers.Dropout(0.3))
+model.add(layers.Dense(100, activation='relu'))
+model.add(layers.Dropout(0.3))
+
+model.add(layers.Dense(n_output, kernel_regularizer=regularizers.l2(0.001), activation='softmax'))
+model.compile(optimizer=optimizers.RMSprop(lr=0.001),
+              loss='categorical_crossentropy')
+hist_100_l3_dr_0p3_l2_0p001 = model.fit(text_train, categorical_labels_train, epochs=20,
+                 batch_size=512, validation_data=(text_test, categorical_labels_test))
+Train on 24384 samples, validate on 8129 samples
+Epoch 1/20
+24384/24384 [==============================] - 63s 3ms/step - loss: 2.3414 - val_loss: 1.6744
+Epoch 2/20
+24384/24384 [==============================] - 56s 2ms/step - loss: 1.7415 - val_loss: 1.2213
+Epoch 3/20
+24384/24384 [==============================] - 49s 2ms/step - loss: 1.3955 - val_loss: 1.0814
+Epoch 4/20
+24384/24384 [==============================] - 49s 2ms/step - loss: 1.2127 - val_loss: 1.0312
+Epoch 5/20
+24384/24384 [==============================] - 52s 2ms/step - loss: 1.0559 - val_loss: 0.8280
+Epoch 6/20
+24384/24384 [==============================] - 50s 2ms/step - loss: 0.9534 - val_loss: 0.8957
+Epoch 7/20
+24384/24384 [==============================] - 50s 2ms/step - loss: 0.8816 - val_loss: 0.8330
+Epoch 8/20
+24384/24384 [==============================] - 49s 2ms/step - loss: 0.8313 - val_loss: 0.7294
+Epoch 9/20
+24384/24384 [==============================] - 49s 2ms/step - loss: 0.7654 - val_loss: 0.6596
+Epoch 10/20
+24384/24384 [==============================] - 49s 2ms/step - loss: 0.7145 - val_loss: 0.6543
+Epoch 11/20
+24384/24384 [==============================] - 56s 2ms/step - loss: 0.6650 - val_loss: 0.7825
+Epoch 12/20
+24384/24384 [==============================] - 50s 2ms/step - loss: 0.6346 - val_loss: 0.6346
+Epoch 13/20
+24384/24384 [==============================] - 49s 2ms/step - loss: 0.6006 - val_loss: 0.6970
+Epoch 14/20
+24384/24384 [==============================] - 50s 2ms/step - loss: 0.5605 - val_loss: 0.7093
+Epoch 15/20
+24384/24384 [==============================] - 49s 2ms/step - loss: 0.5539 - val_loss: 0.6524
+Epoch 16/20
+24384/24384 [==============================] - 50s 2ms/step - loss: 0.5079 - val_loss: 0.6124
+Epoch 17/20
+24384/24384 [==============================] - 50s 2ms/step - loss: 0.4967 - val_loss: 0.6889
+Epoch 18/20
+24384/24384 [==============================] - 49s 2ms/step - loss: 0.4743 - val_loss: 0.7667
+Epoch 19/20
+24384/24384 [==============================] - 50s 2ms/step - loss: 0.4622 - val_loss: 0.6174
+Epoch 20/20
+24384/24384 [==============================] - 49s 2ms/step - loss: 0.4414 - val_loss: 0.5718
+
+n_output = len(labels)
+model = models.Sequential()
+model.add(layers.Dense(200, activation='relu', input_shape = (text.shape[1],)))
+model.add(layers.Dropout(0.3))
+model.add(layers.Dense(200, activation='relu'))
+model.add(layers.Dropout(0.3))
+
+model.add(layers.Dense(n_output, kernel_regularizer=regularizers.l2(0.001), activation='softmax'))
+model.compile(optimizer=optimizers.RMSprop(lr=0.001),
+              loss='categorical_crossentropy')
+hist_200_dr_0p3_l2_0p001 = model.fit(text_train, categorical_labels_train, epochs=20,
+                 batch_size=512, validation_data=(text_test, categorical_labels_test))
+Train on 24384 samples, validate on 8129 samples
+Epoch 1/20
+24384/24384 [==============================] - 74s 3ms/step - loss: 2.4189 - val_loss: 1.2034
+Epoch 2/20
+24384/24384 [==============================] - 70s 3ms/step - loss: 1.2405 - val_loss: 0.8905
+Epoch 3/20
+24384/24384 [==============================] - 71s 3ms/step - loss: 0.8746 - val_loss: 0.7316
+Epoch 4/20
+24384/24384 [==============================] - 73s 3ms/step - loss: 0.6902 - val_loss: 0.7733
+Epoch 5/20
+24384/24384 [==============================] - 72s 3ms/step - loss: 0.5382 - val_loss: 0.6460
+Epoch 6/20
+24384/24384 [==============================] - 72s 3ms/step - loss: 0.4861 - val_loss: 0.5213
+Epoch 7/20
+24384/24384 [==============================] - 73s 3ms/step - loss: 0.3694 - val_loss: 0.5345
+Epoch 8/20
+24384/24384 [==============================] - 78s 3ms/step - loss: 0.3300 - val_loss: 0.5856
+Epoch 9/20
+24384/24384 [==============================] - 78s 3ms/step - loss: 0.2833 - val_loss: 0.7236
+Epoch 10/20
+24384/24384 [==============================] - 71s 3ms/step - loss: 0.2638 - val_loss: 0.5036
+Epoch 11/20
+24384/24384 [==============================] - 69s 3ms/step - loss: 0.2338 - val_loss: 0.4988
+Epoch 12/20
+24384/24384 [==============================] - 69s 3ms/step - loss: 0.2248 - val_loss: 0.8013
+Epoch 13/20
+24384/24384 [==============================] - 70s 3ms/step - loss: 0.1750 - val_loss: 0.6117
+Epoch 14/20
+24384/24384 [==============================] - 69s 3ms/step - loss: 0.1788 - val_loss: 0.6738
+Epoch 15/20
+24384/24384 [==============================] - 69s 3ms/step - loss: 0.1573 - val_loss: 0.8797
+Epoch 16/20
+24384/24384 [==============================] - 69s 3ms/step - loss: 0.1532 - val_loss: 0.5292
+Epoch 17/20
+24384/24384 [==============================] - 69s 3ms/step - loss: 0.1412 - val_loss: 0.5399
+Epoch 18/20
+24384/24384 [==============================] - 69s 3ms/step - loss: 0.1586 - val_loss: 0.5878
+Epoch 19/20
+24384/24384 [==============================] - 70s 3ms/step - loss: 0.1163 - val_loss: 0.7997
+Epoch 20/20
+24384/24384 [==============================] - 69s 3ms/step - loss: 0.1510 - val_loss: 0.5678
+
